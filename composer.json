@@ -1,0 +1,23 @@
+{
+    "name": "ferror/php-antlr-playground",
+    "description": "",
+    "authors": [
+        {
+            "name": "ferror",
+            "email": "zmalcherczyk@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "antlr/antlr4-php-runtime": "^0.5.0"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ferror\\PHP\\": "src/",
+            "Ferror\\Antlr\\": "antlr/"
+        }
+    }
+}
