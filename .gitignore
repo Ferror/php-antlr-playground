@@ -1,1 +1,7 @@
 /vendor/
+
+#ANTLR
+/antlr/*.class
+/antlr/*.java
+/antlr/*.tokens
+/antlr/*.interp

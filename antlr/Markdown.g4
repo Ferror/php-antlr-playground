@@ -12,7 +12,7 @@ line: IDENTIFIER TEXT NEWLINE;
 IDENTIFIER: (HEADER | LIST)+;
 
 HEADER: ('#' | '##' | '###')+;
-LIST: '*'+;
+LIST: ('*')+;
 
 WHITESPACE: (' ' | '\t')+;
 
