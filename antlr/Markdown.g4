@@ -7,20 +7,24 @@ grammar Markdown;
 //HEADER: ^[#][ ]+[ a-zA-Z0-9]+;
 markdown: line+ EOF;
 
-line: IDENTIFIER TEXT NEWLINE;
+line: (IDENTIFIER | text)+ NEWLINE;
 
 IDENTIFIER: (HEADER | LIST)+;
 
-HEADER: ('#' | '##' | '###')+;
-LIST: ('*')+;
+HEADER: ('#' WHITESPACE | '##' | '###' | '####' | '#####' | '######')+;
+LIST: ('*' WHITESPACE | '* *')+;
+
 
 WHITESPACE: (' ' | '\t')+;
 
-TEXT: (WORD | INLINE_CODE)+;
+text: (WORD | WHITESPACE | code | bold | italic | strike)+;
 
-WORD: [a-zA-Z0-9 ]+;
+WORD: [a-zA-Z0-9]+;
 
 //^[`][a-z\s]+[`]
-INLINE_CODE: '`' WORD '`'+;
+code: '`' (WORD | WHITESPACE)+ '`'+;
+bold: '**' (WORD | WHITESPACE)+ '**'+;
+italic: '*' (WORD | WHITESPACE)+ '*'+;
+strike: '~~' (WORD | WHITESPACE)+ '~~'+;
 
 NEWLINE: ('\r' ? '\n' | '\r')+;
