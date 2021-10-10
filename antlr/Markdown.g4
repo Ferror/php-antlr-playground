@@ -1,26 +1,18 @@
 grammar Markdown;
-//r: '# ' CONTENT;
-//CONTENT: [a-z0-9]+;
-//WS : [ \t\r\n]+ -> skip;
 
-//TEXT: [\ta-zA-Z0-9]+;
-//HEADER: ^[#][ ]+[ a-zA-Z0-9]+;
 markdown: line+ EOF;
 
-line: IDENTIFIER TEXT NEWLINE;
+line: (header | m_list | text)+ NEWLINE;
 
-IDENTIFIER: (HEADER | LIST)+;
+header: ('#' text | '##' text | '###' text | '####' text | '#####' text | '######' text)+;
+m_list: ('*' text | '* *' text)+;
+text: (WORD | WHITESPACE | code | bold | italic | strike)+;
 
-HEADER: ('#' | '##' | '###')+;
-LIST: ('*')+;
+code: '`' (WORD | WHITESPACE)+ '`'+;
+bold: '**' (WORD | WHITESPACE)+ '**'+;
+italic: '*' (WORD | WHITESPACE)+ '*'+;
+strike: '~~' (WORD | WHITESPACE)+ '~~'+;
 
 WHITESPACE: (' ' | '\t')+;
-
-TEXT: (WORD | INLINE_CODE)+;
-
-WORD: [a-zA-Z0-9 ]+;
-
-//^[`][a-z\s]+[`]
-INLINE_CODE: '`' WORD '`'+;
-
+WORD: [a-zA-Z0-9]+;
 NEWLINE: ('\r' ? '\n' | '\r')+;
