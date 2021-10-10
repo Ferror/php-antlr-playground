@@ -9,6 +9,8 @@
 
 # Java Testing
 
+`control` + `d` - stops execution
+
 ## Console
 ```
 antlr Markdown.g4
