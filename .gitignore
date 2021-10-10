@@ -5,3 +5,4 @@
 /antlr/*.java
 /antlr/*.tokens
 /antlr/*.interp
+/antlr/*.php
